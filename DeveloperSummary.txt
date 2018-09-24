@@ -1,0 +1,50 @@
+Deloitte Technical exercise developer summary.
+==============================================
+
+Disclaimer:
+-----------
+This is the first time I have used Mulesoft Anypoint for development. So some code may be naive.
+Most of the issues encountered were the one point setup issues and software incompatibility issues.
+Some of the features were not available in my development environment.
+
+
+Mulesoft Anypoint Setup Issues:
+-------------------------------
+-> Admin access for laptop.
+-> Anypoint studio version 4.xx is not compatible with DataWeave v1
+-> Could not enable Maven for project packaging due to unavailability of JDK 1.5
+-> Could not enable MUnit support due to missing Mulesoft libraries.
+
+
+Supplied webservice issues:
+---------------------------
+-> The SOAP webservice at URL http://www.webservicex.com/globalweather.asmx?WSDL was unavailable. Used Docker image for the service.
+-> Webservice provide with the docker image embeded the content in two CDATA elements (<![CDATA[ <![CDATA[ ]] ]]) which was wrong. 
+   Corrected the docker image. New docker sample is available in repo.
+
+   
+Approaches taken:
+-----------------
+
+-> REST APIs
+Mapped SOAP webservices with corrsponsing REST APIs. Used RAML for defining the REST specs.
+
+--> REST API : /countries
+Used XSLT transformation to select all distinct Countries from the webservice response.
+
+--> REST API : /countries/{country}/cities
+Used Dataweave transformation to select Cities from the webservice response.
+Validation added for path param : country
+
+--> REST API : /countries/{country}/cities/{city}/weather
+Used Dataweave transformation to select the webservice weather response to JSON.
+Validation added for path param : country, city
+
+NOTE: 
+Some endpoints like /countries/{country}, /countries/{country}/cities/{city} are left out as there was nothing unique to demonstrate here.
+Security aspects are not included or demonstrated.
+MIME type application/json is used to return the output.
+
+
+
+ 
