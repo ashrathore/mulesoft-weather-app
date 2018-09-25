@@ -84,7 +84,7 @@ read(payload.ns0#GetCitiesByCountryResponse replace "&lt;" with "<" replace "&gt
 	cities: payload.NewDataSet.*Table map ((table , indexOfTable) -> {
 		city: table.City,
 		country: table.Country
-	})
+	}) filter $.country == flowVars.country
 }]]></dw:set-payload>
         </dw:transform-message>
 
