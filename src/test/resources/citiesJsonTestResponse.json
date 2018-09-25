@@ -1,12 +1,6 @@
 {
-  "cities": [
-    {
-      "city":"Melbourne",
-      "country":"Australia"
-    },
-    {
-      "city":"Archerfield Aerodrome",
-      "country":"Australia"
-    }
-  ]
+    "cities":
+        [
+            {"city":"Archerfield Aerodrome","country":"Australia"}
+        ]
 }
