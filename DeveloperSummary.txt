@@ -3,17 +3,16 @@ Deloitte Technical exercise developer summary.
 
 Disclaimer:
 -----------
-This is the first time I have used Mulesoft Anypoint for development. So some code may be naive.
-Most of the issues encountered were the one point setup issues and software incompatibility issues.
-Some of the features were not available in my development environment.
+This is the first time I have used Mulesoft Anypoint for development. So some code or design decisions may be naive.
+The intent of this exercise is to learn a new technology like MuleSoft AnyPoint and to demonstrate an integration scenario using it.
+This code should not be used in production and should just be used as a reference.
 
 
 Mulesoft Anypoint Setup Issues:
 -------------------------------
 -> Admin access for laptop.
 -> Anypoint studio version 4.xx is not compatible with DataWeave v1
--> Could not enable Maven for project packaging due to unavailability of JDK 1.5
--> Could not enable MUnit support due to missing Mulesoft libraries.
+-> Could not enable Maven support as it requires Mulesoft Maven repo access.
 
 
 Supplied webservice issues:
@@ -34,16 +33,22 @@ Used XSLT transformation to select all distinct Countries from the webservice re
 
 --> REST API : /countries/{country}/cities
 Used Dataweave transformation to select Cities from the webservice response.
+Used filter to select cities for a particular country.
 Validation added for path param : country
 
 --> REST API : /countries/{country}/cities/{city}/weather
 Used Dataweave transformation to select the webservice weather response to JSON.
+Used filter to select weather for a particular city.
 Validation added for path param : country, city
 
+
 NOTE: 
-Some endpoints like /countries/{country}, /countries/{country}/cities/{city} are left out as there was nothing unique to demonstrate here.
-Security aspects are not included or demonstrated.
-MIME type application/json is used to return the output.
+-----
+--> Some endpoints like /countries/{country}, /countries/{country}/cities/{city} are left out as there was nothing unique to demonstrate here.
+--> Security aspects are not included or demonstrated.
+--> MIME type application/json is used to return the output.
+--> Comprehensive use of HTTP status codes and headers is not demonstrated but left out for discussion.
+--> Unit tests are added only for happy path scenarios.
 
 
 
