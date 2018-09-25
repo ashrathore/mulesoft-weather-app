@@ -128,7 +128,10 @@ read(payload.ns0#GetWeatherResponse replace "&lt;" with "<" replace "&gt;" with 
 	DewPoint: payload.NewDataSet.DewPoint,
 	RelativeHumidity: payload.NewDataSet.RelativeHumidity as :string,
 	Status: payload.NewDataSet.Status
-}]]></dw:set-payload>
+} when payload.NewDataSet.Location == flowVars.city
+otherwise
+{
+} ]]></dw:set-payload>
         </dw:transform-message>
 
 
